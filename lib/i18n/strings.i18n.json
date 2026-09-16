@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "Rick & Morty Explorer",
+    "portal": "Multiverse Portal"
+  },
+  "nav": {
+    "characters": "Characters",
+    "episodes": "Episodes",
+    "bookmarks": "Bookmarks",
+    "settings": "Settings"
+  },
+  "character": {
+    "status": {
+      "alive": "Alive",
+      "dead": "Dead",
+      "unknown": "Unknown"
+    },
+    "gender": {
+      "female": "Female",
+      "male": "Male",
+      "genderless": "Genderless",
+      "unknown": "Unknown"
+    },
+    "origin": "Origin Location",
+    "lastLocation": "Last Known Location",
+    "episodesCount": "Episode Appearances ({count})",
+    "searchPlaceholder": "Search characters by name...",
+    "noResults": "No characters found in this dimension."
+  },
+  "settings": {
+    "theme": "Appearance",
+    "themeMode": {
+      "system": "System Default",
+      "light": "Light Mode",
+      "dark": "Dark Mode"
+    },
+    "language": "Language / ភាសា",
+    "savedCount": "Saved Bookmarks ({count})"
+  },
+  "errors": {
+    "network": "Connection failed. Please check your interdimensional portal.",
+    "notFound": "Entity not found.",
+    "server": "Citadel server error. Please try again later."
+  }
+}

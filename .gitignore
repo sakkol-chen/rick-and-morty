@@ -1,0 +1,73 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Flutter/Dart/Pub
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+lib/generated_plugin_registrant.dart
+
+# Android
+android/.gradle/
+android/app/src/main/gen/
+android/captures/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# iOS & macOS
+ios/**/*.DS_Store
+ios/Flutter/.last_build_id
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+ios/.symlinks/
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/ephemeral/
+macos/Pods/
+
+# FVM (Flutter Version Management)
+.fvm/flutter_sdk
+.fvm/fvm_cache
+
+# Environment Variables & Secrets
+.env
+.env.*
+*.config.json
+
+# Optional: Code Generation Files (Ferry, Injectable, Slang)
+# NOTE: It is standard practice in Flutter TO COMMIT your generated files 
+# (*.g.dart, *.gql.dart) so your CI/CD pipeline doesn't have to run 
+# build_runner. If you prefer to ignore them, uncomment the lines below:
+# *.g.dart
+# *.gql.dart
+# *.req.gql.dart
+# *.data.gql.dart
+# *.var.gql.dart
+# *.schema.gql.dart

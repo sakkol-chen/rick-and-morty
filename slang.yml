@@ -1,0 +1,9 @@
+targets:
+  $default:
+    base_locale: en
+    fallback_straegy: base_locale
+    input_directory: lib/i18n
+    input_file_pattern: .i18n.json
+    output_directory: lip/i18n
+    output_file_name: translateion.g.dart
+    namespaces: flase

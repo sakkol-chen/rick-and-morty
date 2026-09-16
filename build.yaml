@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          # The word before the | must match your pubspec.yaml name perfectly!
+          schema: rick_and_morty|lib/schema.graphql
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          # The word before the | must match your pubspec.yaml name perfectly!
+          schema: rick_and_morty|lib/schema.graphql
+      injectable_generator:injectable_builder:
+        options:
+          auto_register: true

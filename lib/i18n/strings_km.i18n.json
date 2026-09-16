@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "អ្នករុករក Rick & Morty",
+    "portal": "វិបផតថលពហុចក្រវាឡ"
+  },
+  "nav": {
+    "characters": "តួអង្គ",
+    "episodes": "ភាគ",
+    "bookmarks": "ចំណាំ",
+    "settings": "ការកំណត់"
+  },
+  "character": {
+    "status": {
+      "alive": "នៅរស់",
+      "dead": "ស្លាប់",
+      "unknown": "មិនស្គាល់"
+    },
+    "gender": {
+      "female": "ស្រី",
+      "male": "ប្រុស",
+      "genderless": "គ្មានភេទ",
+      "unknown": "មិនស្គាល់"
+    },
+    "origin": "ទីកន្លែងដើម",
+    "lastLocation": "ទីតាំងដែលបានដឹងចុងក្រោយ",
+    "episodesCount": "បង្ហាញក្នុងភាគ ({count})",
+    "searchPlaceholder": "ស្វែងរកតួអង្គតាមឈ្មោះ...",
+    "noResults": "រកមិនឃើញតួអង្គនៅក្នុងវិមាត្រនេះទេ។"
+  },
+  "settings": {
+    "theme": "រូបរាង",
+    "themeMode": {
+      "system": "លំនាំដើមប្រព័ន្ធ",
+      "light": "ទម្រង់ពន្លឺ",
+      "dark": "ទម្រង់ងងឹត"
+    },
+    "language": "ភាសា / Language",
+    "savedCount": "បានរក្សាទុកចំនួន ({count})"
+  },
+  "errors": {
+    "network": "ការតភ្ជាប់បរាជ័យ។ សូមពិនិត្យមើលវិបផតថលអន្តរវិមាត្ររបស់អ្នក។",
+    "notFound": "រកមិនឃើញទិន្នន័យ។",
+    "server": "បញ្ហាម៉ាស៊ីនមេ Citadel។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។"
+  }
+}

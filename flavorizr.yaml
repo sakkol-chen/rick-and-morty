@@ -1,0 +1,27 @@
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    ios:
+  flavors:
+    dev:
+      app:
+        name: "Rick & Morty Dev"
+      android:
+        applicationId: "com.multiverse.rickandmorty.dev"
+      ios:
+        bundleId: "com.multiverse.rickandmorty.dev"
+    staging:
+      app:
+        name: "Rick & Morty Staging"
+      android:
+        applicationId: "com.multiverse.rickandmorty.staging"
+      ios:
+        bundleId: "com.multiverse.rickandmorty.staging"
+    production:
+      app:
+        name: "Rick & Morty"
+      android:
+        applicationId: "com.multiverse.rickandmorty"
+      ios:
+        bundleId: "com.multiverse.rickandmorty"
