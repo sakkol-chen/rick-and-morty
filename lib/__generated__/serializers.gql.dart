@@ -14,6 +14,17 @@ import 'package:rick_and_morty/__generated__/schema.schema.gql.dart'
         GFilterEpisode,
         GFilterLocation,
         GUpload;
+import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.data.gql.dart'
+    show
+        GGetCharacterDetailData,
+        GGetCharacterDetailData_character,
+        GGetCharacterDetailData_character_episode,
+        GGetCharacterDetailData_character_location,
+        GGetCharacterDetailData_character_origin;
+import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.req.gql.dart'
+    show GGetCharacterDetailReq;
+import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.var.gql.dart'
+    show GGetCharacterDetailVars;
 import 'package:rick_and_morty/features/characters/data/graphql/__generated__/characters.data.gql.dart'
     show
         GGetCharactersData,
@@ -37,6 +48,13 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GFilterCharacter,
   GFilterEpisode,
   GFilterLocation,
+  GGetCharacterDetailData,
+  GGetCharacterDetailData_character,
+  GGetCharacterDetailData_character_episode,
+  GGetCharacterDetailData_character_location,
+  GGetCharacterDetailData_character_origin,
+  GGetCharacterDetailReq,
+  GGetCharacterDetailVars,
   GGetCharactersData,
   GGetCharactersData_characters,
   GGetCharactersData_characters_info,

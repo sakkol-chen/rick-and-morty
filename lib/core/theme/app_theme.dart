@@ -1,74 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'serene_canvas_tokens.dart'; // Import your tokens!
 
 class AppTheme {
-  // Serene Canvas Palette
-  static const Color primary = Color(0xFF1A1E29);
-  static const Color secondary = Color(0xFFDCE4F8);
-  static const Color tertiary = Color(0xFFFDE4EB);
-  static const Color canvasBackground = Color(0xFFF7F9FD);
-  static const Color surfaceElevation = Color(0xFFFFFFFF);
-  static const Color subduedText = Color(0xFF7E8B9B);
-  static const Color accentMint = Color(0xFFE0F5EE);
-
-  // Serene Ambient Shadows (Level 2)
-  static final List<BoxShadow> ambientShadow = [
-    BoxShadow(
-      color: const Color(0xFF1A1E29).withOpacity(0.05),
-      offset: const Offset(0, 10),
-      blurRadius: 24,
-      spreadRadius: -4,
-    ),
-    BoxShadow(
-      color: Colors.white.withOpacity(0.9),
-      offset: const Offset(0, -2),
-      blurRadius: 6,
-    ),
-  ];
+  AppTheme._(); // Prevent instantiation
 
   static ThemeData get lightTheme {
-    // Base fonts via Google Fonts
-    final displayFont = GoogleFonts.plusJakartaSans();
-    final bodyFont = GoogleFonts.inter();
-
     return ThemeData(
       brightness: Brightness.light,
-      primaryColor: primary,
-      scaffoldBackgroundColor: canvasBackground,
+      primaryColor: SereneCanvasTokens.primary,
+      scaffoldBackgroundColor: SereneCanvasTokens.background,
+
+      // 1. Color Scheme mapped directly from Tokens
       colorScheme: const ColorScheme.light(
-        primary: primary,
-        secondary: secondary,
-        tertiary: tertiary,
-        surface: surfaceElevation,
-        background: canvasBackground,
+        primary: SereneCanvasTokens.primary,
+        secondary: SereneCanvasTokens.secondaryContainer,
+        tertiary: SereneCanvasTokens.tertiaryPastel,
+        surface: SereneCanvasTokens.surfaceContainerLowest,
+        background: SereneCanvasTokens.background,
+        error: SereneCanvasTokens.error,
       ),
-      // Typography with strict 1.35 line-height for Khmer diacritics
+
+      // 2. Typography (Keeping your Khmer diacritics requirement)
       textTheme: TextTheme(
         displayLarge: GoogleFonts.kantumruyPro(
           height: 1.35,
-          color: primary,
+          color: SereneCanvasTokens.primary,
           letterSpacing: -0.03,
         ),
         titleLarge: GoogleFonts.kantumruyPro(
           height: 1.35,
-          color: primary,
+          color: SereneCanvasTokens.primary,
           fontWeight: FontWeight.bold,
           letterSpacing: -0.02,
         ),
-        bodyLarge: GoogleFonts.kantumruyPro(height: 1.35, color: primary),
-        bodyMedium: GoogleFonts.kantumruyPro(height: 1.35, color: subduedText),
+        bodyLarge: GoogleFonts.kantumruyPro(
+          height: 1.35,
+          color: SereneCanvasTokens.primary,
+        ),
+        bodyMedium: GoogleFonts.kantumruyPro(
+          height: 1.35,
+          color: SereneCanvasTokens.subduedText,
+        ),
         labelLarge: GoogleFonts.kantumruyPro(
           height: 1.35,
-          color: primary,
+          color: SereneCanvasTokens.primary,
           fontWeight: FontWeight.w600,
         ),
       ),
-      // Pill & Organic Shapes
+
+      // 3. Shapes mapped from Tokens
       cardTheme: CardThemeData(
-        color: surfaceElevation,
-        elevation: 0, // Shadows handled manually via containers
+        color: SereneCanvasTokens.surfaceContainerLowest,
+        elevation: 0, // Shadows handled manually via ambientShadow in Tokens
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24), // 1.5rem curvature
+          borderRadius: BorderRadius.circular(SereneCanvasTokens.radiusMd),
         ),
       ),
       useMaterial3: true,

@@ -21,8 +21,12 @@ import '../../features/characters/data/repositories/characters_repository_impl.d
     as _i575;
 import '../../features/characters/domain/repositories/characters_repository.dart'
     as _i739;
+import '../../features/characters/domain/usecases/get_character_detail_use_case.dart'
+    as _i867;
 import '../../features/characters/domain/usecases/get_characters_use_case.dart'
     as _i1005;
+import '../../features/characters/presentation/bloc/characters_bloc.dart'
+    as _i91;
 import 'network_module.dart' as _i567;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -48,6 +52,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1005.GetCharactersUseCase>(
       () => _i1005.GetCharactersUseCase(gh<_i739.CharactersRepository>()),
+    );
+    gh.lazySingleton<_i867.GetCharacterDetailUseCase>(
+      () => _i867.GetCharacterDetailUseCase(gh<_i739.CharactersRepository>()),
+    );
+    gh.factory<_i91.CharactersBloc>(
+      () => _i91.CharactersBloc(gh<_i1005.GetCharactersUseCase>()),
     );
     return this;
   }

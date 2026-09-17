@@ -13,6 +13,13 @@ Serializers _$serializers =
           ..add(GFilterCharacter.serializer)
           ..add(GFilterEpisode.serializer)
           ..add(GFilterLocation.serializer)
+          ..add(GGetCharacterDetailData.serializer)
+          ..add(GGetCharacterDetailData_character.serializer)
+          ..add(GGetCharacterDetailData_character_episode.serializer)
+          ..add(GGetCharacterDetailData_character_location.serializer)
+          ..add(GGetCharacterDetailData_character_origin.serializer)
+          ..add(GGetCharacterDetailReq.serializer)
+          ..add(GGetCharacterDetailVars.serializer)
           ..add(GGetCharactersData.serializer)
           ..add(GGetCharactersData_characters.serializer)
           ..add(GGetCharactersData_characters_info.serializer)
@@ -22,6 +29,14 @@ Serializers _$serializers =
           ..add(GGetCharactersReq.serializer)
           ..add(GGetCharactersVars.serializer)
           ..add(GUpload.serializer)
+          ..addBuilderFactory(
+            const FullType(BuiltList, const [
+              const FullType.nullable(
+                GGetCharacterDetailData_character_episode,
+              ),
+            ]),
+            () => ListBuilder<GGetCharacterDetailData_character_episode?>(),
+          )
           ..addBuilderFactory(
             const FullType(BuiltList, const [
               const FullType.nullable(GGetCharactersData_characters_results),

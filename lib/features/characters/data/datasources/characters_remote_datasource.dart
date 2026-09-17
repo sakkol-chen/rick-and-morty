@@ -1,5 +1,8 @@
 import 'package:ferry/ferry.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.data.gql.dart';
+import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.req.gql.dart';
+import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.var.gql.dart';
 import '../graphql/__generated__/characters.req.gql.dart';
 import '../graphql/__generated__/characters.data.gql.dart';
 import '../graphql/__generated__/characters.var.gql.dart';
@@ -13,6 +16,9 @@ abstract class CharactersRemoteDataSource {
     String? status,
     String? gender,
   });
+
+  Future<OperationResponse<GGetCharacterDetailData, GGetCharacterDetailVars>>
+  getCharacterDetail(String id);
 }
 
 @LazySingleton(as: CharactersRemoteDataSource)
@@ -40,6 +46,12 @@ class CharactersRemoteDataSourceImpl implements CharactersRemoteDataSource {
       }
     });
 
+    return await client.request(req).first;
+  }
+
+  Future<OperationResponse<GGetCharacterDetailData, GGetCharacterDetailVars>>
+  getCharacterDetail(String id) async {
+    final req = GGetCharacterDetailReq((b) => b..vars.id = id);
     return await client.request(req).first;
   }
 }

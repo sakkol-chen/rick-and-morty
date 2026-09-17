@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/core/di/injection.dart';
-import 'package:rick_and_morty/core/theme/app_theme.dart';
-import 'package:rick_and_morty/i18n/strings.g.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'core/theme/app_theme.dart'; // Your refactored AppTheme
+import 'core/router/app_router.dart';
 
 void main() async {
+  // Required if we do any async work before runApp
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 1. Boot up the Di Container (waits for SharePreference)
+  // Initialize GetIt (The DI Container)
   await configureDependencies();
 
-  // 2. initialize slang
-  LocaleSettings.setLocale(AppLocale.km);
-
-  runApp(
-    // Wrap your app in the TranslationProvider
-    TranslationProvider(child: const MultiverseApp()),
-  );
+  runApp(const MultiverseApp());
 }
 
 class MultiverseApp extends StatelessWidget {
@@ -24,20 +18,11 @@ class MultiverseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // 1. wire up Slang localization
-      locale: TranslationProvider.of(context).flutterLocale,
-      supportedLocales: AppLocaleUtils.supportedLocales,
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
-
-      // 2. wire up with Serene Canvas thems
+    return MaterialApp.router(
+      title: 'Multiverse Explorer',
       theme: AppTheme.lightTheme,
-
-      // darkTheme: AppTheme.dartTheme,
-      home: Scaffold(
-        appBar: AppBar(title: Text(t.app.title)),
-        body: Center(child: Text(t.character.status.alive)),
-      ),
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false, // Hides the annoying debug banner
     );
   }
 }
