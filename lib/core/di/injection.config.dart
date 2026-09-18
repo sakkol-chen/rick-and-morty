@@ -37,6 +37,9 @@ import '../../features/characters/presentation/bloc/character_detail/character_d
     as _i235;
 import '../../features/characters/presentation/bloc/characters_bloc.dart'
     as _i91;
+import '../../features/settings/data/datasources/settings_local_datasource.dart'
+    as _i723;
+import '../../features/settings/presentation/bloc/settings_bloc.dart' as _i585;
 import 'network_module.dart' as _i567;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -63,6 +66,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i130.FavoritesLocalDataSource>(
       () => _i130.FavoritesLocalDataSourceImpl(gh<_i460.SharedPreferences>()),
     );
+    gh.lazySingleton<_i723.SettingsLocalDataSource>(
+      () => _i723.SettingsLocalDataSourceImpl(gh<_i460.SharedPreferences>()),
+    );
     gh.lazySingleton<_i713.GetBookmarkedCharactersUseCase>(
       () => _i713.GetBookmarkedCharactersUseCase(
         gh<_i25.Client>(),
@@ -74,6 +80,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i867.GetCharacterDetailUseCase>(
       () => _i867.GetCharacterDetailUseCase(gh<_i739.CharactersRepository>()),
+    );
+    gh.factory<_i585.SettingsBloc>(
+      () => _i585.SettingsBloc(gh<_i723.SettingsLocalDataSource>()),
     );
     gh.lazySingleton<_i1028.ToggleFavoriteUseCase>(
       () => _i1028.ToggleFavoriteUseCase(
