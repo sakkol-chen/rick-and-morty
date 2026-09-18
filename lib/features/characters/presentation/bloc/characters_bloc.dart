@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:rick_and_morty/core/error/failures.dart';
 import 'package:rick_and_morty/features/characters/data/datasources/favorites_local_datasource.dart';
 import 'package:rick_and_morty/features/characters/domain/usecases/get_characters_use_case.dart';
-import 'package:rick_and_morty/features/characters/domain/usecases/toggle_favorite_usecase.dart';
+import 'package:rick_and_morty/features/characters/domain/usecases/toggle_favorite_use_case.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../../core/common/result.dart';
 import '../../domain/entities/characters_entity.dart'; // Ensure matches your file name
@@ -20,7 +20,7 @@ EventTransformer<Event> debounce<Event>(Duration duration) {
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final GetCharactersUseCase _getCharactersUseCase;
   final FavoritesLocalDataSource _localDataSource;
-  final ToggleFavoriteUsecase _toggleFavoriteUsecase;
+  final ToggleFavoriteUseCase _toggleFavoriteUsecase;
 
   CharactersBloc(
     this._getCharactersUseCase,
@@ -45,9 +45,9 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   /// operations, which otherwise emit a brand-new CharactersLoaded. Reading
   /// the current state's favoriteIds (if any) before those operations run
   /// means a search or filter change never silently un-favorites anything.
-  Set<Object> get _currentFavoriteIds {
+  Set<String> get _currentFavoriteIds {
     final current = state;
-    return current is CharactersLoaded ? current.favoriteIds : const {};
+    return current is CharactersLoaded ? current.favoriteIds : const <String>{};
   }
 
   Future<void> _onFetchCharacters(
@@ -165,28 +165,28 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   }
 
   Future<void> _onToggleFavorite(
-  ToggleFavoriteEvent event,
-  Emitter<CharactersState> emit,
-) async {
-  final currentState = state;
-  if (currentState is! CharactersLoaded) return;
+    ToggleFavoriteEvent event,
+    Emitter<CharactersState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is! CharactersLoaded) return;
 
-  // 1. Convert the Object ID to a strict String
-  final targetId = event.id.toString(); 
+    // 1. Convert the Object ID to a strict String
+    final targetId = event.id.toString();
 
-  // 2. Optimistic UI Update
-  final newFavorites = Set<String>.from(currentState.favoriteIds);
-  if (newFavorites.contains(targetId)) {
-    newFavorites.remove(targetId);
-  } else {
-    newFavorites.add(targetId);
+    // 2. Optimistic UI Update
+    final newFavorites = Set<String>.from(currentState.favoriteIds);
+    if (newFavorites.contains(targetId)) {
+      newFavorites.remove(targetId);
+    } else {
+      newFavorites.add(targetId);
+    }
+
+    emit(currentState.copyWith(favoriteIds: newFavorites));
+
+    // 3. Persist in background
+    await _toggleFavoriteUsecase.execute(targetId);
   }
-  
-  emit(currentState.copyWith(favoriteIds: newFavorites));
-
-  // 3. Persist in background
-  await _toggleFavoriteUsecase.execute(targetId);
-}
 
   // Helper method to keep code DRY
   void _handleResult(
@@ -196,11 +196,11 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
     String? query,
     String? status,
     String? gender,
-    Set<Object> favoriteIds, // ─── NEW ───
+    Set<String> favoriteIds, // ─── NEW ───
   ) {
     switch (result) {
       case Success(value: final characters):
-        final favorites = _localDataSource.getFavoriteIds;
+        final favorites = _localDataSource.getFavoriteIds();
         emit(
           CharactersLoaded(
             characters: characters,

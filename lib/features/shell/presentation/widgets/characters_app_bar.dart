@@ -33,7 +33,7 @@ class CharactersAppBar extends StatelessWidget {
           ),
           const SizedBox(width: SereneCanvasTokens.spaceMd),
           Expanded(
-            child: Text('Characters', style: SereneCanvasTokens.headlineMd()),
+            child: Text('Rick And Morty', style: SereneCanvasTokens.headlineMd()),
           ),
           CircleIconButton(
             icon: Icons.person_outline_rounded,

@@ -32,7 +32,7 @@ class CharactersLoaded extends CharactersState {
     this.currentStatus,
     this.currentGender,
     this.isPaginating = false,
-    this.favoriteIds = const <Object>{}, // ─── NEW ───
+    this.favoriteIds = const <String>{}, // ─── NEW ───
   });
 
   final List<CharacterEntity> characters;
@@ -48,7 +48,7 @@ class CharactersLoaded extends CharactersState {
   /// state (rather than as local page state) so the whole screen is
   /// driven by BlocBuilder with no separate `setState()`-managed field to
   /// keep in sync.
-  final Set<Object> favoriteIds;
+  final Set<String> favoriteIds;
 
   CharactersLoaded copyWith({
     List<CharacterEntity>? characters,
@@ -58,7 +58,7 @@ class CharactersLoaded extends CharactersState {
     String? currentStatus,
     String? currentGender,
     bool? isPaginating,
-    Set<Object>? favoriteIds, // ─── NEW ───
+    Set<String>? favoriteIds, // ─── NEW ───
   }) {
     return CharactersLoaded(
       characters: characters ?? this.characters,

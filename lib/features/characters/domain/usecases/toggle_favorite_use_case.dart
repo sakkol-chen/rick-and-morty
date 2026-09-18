@@ -4,11 +4,11 @@ import 'package:rick_and_morty/features/characters/data/datasources/favorites_lo
 import 'package:rick_and_morty/features/characters/data/graphql/__generated__/character_detail.req.gql.dart';
 
 @lazySingleton
-class ToggleFavoriteUsecase {
+class ToggleFavoriteUseCase {
   final FavoritesLocalDataSource localDataSource;
   final Client ferryClient;
 
-  ToggleFavoriteUsecase(this.localDataSource, this.ferryClient);
+  ToggleFavoriteUseCase(this.localDataSource, this.ferryClient);
 
   Future<void> execute(String characterId) async {
     await localDataSource.toggleFavorite(characterId);

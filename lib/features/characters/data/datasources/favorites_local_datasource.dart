@@ -6,7 +6,7 @@ abstract class FavoritesLocalDataSource {
   Future<void> toggleFavorite(String id);
 }
 
-@lazySingleton
+@LazySingleton(as: FavoritesLocalDataSource)
 class FavoritesLocalDataSourceImpl implements FavoritesLocalDataSource {
   static const _favoriteskey = 'favorite_character_ids';
   final SharedPreferences _prefs;

@@ -69,7 +69,7 @@ class CharacterDetailPage extends StatelessWidget {
                           character.name,
                           style: SereneCanvasTokens.headlineDisplayMobile(),
                         ),
-
+                        const SizedBox(height: SereneCanvasTokens.spaceMd),
                         _buildInfoCard(
                           'Origin',
                           character.originName,
